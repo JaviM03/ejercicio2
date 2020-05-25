@@ -15,7 +15,7 @@ public class Importancia {
 	
 	@Id
 	@Column(name="c_importancia")
-	private Integer codigo;
+	private Integer c_importancia;
 	
 	@Column(name="s_importancia")
 	private String s_importancia;
@@ -23,13 +23,7 @@ public class Importancia {
 	@OneToMany(mappedBy="importancia",fetch=FetchType.EAGER)
 	private List<Contribuyente> contribuyentes;
 
-	public Integer getCodigo() {
-		return codigo;
-	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
 
 	public String getS_importancia() {
 		return s_importancia;
@@ -39,6 +33,24 @@ public class Importancia {
 		this.s_importancia = s_importancia;
 	}
 	
+	
+	
+	public Integer getC_importancia() {
+		return c_importancia;
+	}
+
+	public void setC_importancia(Integer c_importancia) {
+		this.c_importancia = c_importancia;
+	}
+
+	public List<Contribuyente> getContribuyentes() {
+		return contribuyentes;
+	}
+
+	public void setContribuyentes(List<Contribuyente> contribuyentes) {
+		this.contribuyentes = contribuyentes;
+	}
+
 	public Importancia() {
 		
 	}

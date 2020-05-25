@@ -3,6 +3,8 @@ package com.uca.capas.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,6 +15,7 @@ import javax.persistence.Table;
 public class Contribuyente {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="c_contribuyente")
 	private Integer codigo;
 	
@@ -31,6 +34,14 @@ public class Contribuyente {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="c_importancia")
 	private Importancia importancia;
+
+	public Importancia getImportancia() {
+		return importancia;
+	}
+
+	public void setImportancia(Importancia importancia) {
+		this.importancia = importancia;
+	}
 
 	public Integer getCodigo() {
 		return codigo;
