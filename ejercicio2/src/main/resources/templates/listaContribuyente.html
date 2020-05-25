@@ -2,9 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Lista de contribuyentes</title>
 </head>
 <body>
+
+<table>
+	<thead>
+		<th>Id</th>
+		<th>Nombre</th>
+		<th>Apellido</th>
+		<th>Nit</th>
+		<th>Fecha de ingreso</th>
+		<th> Importancia</th>
+	</thead>
+		<th:block th:each="contribuyente, row: ${contribuyentes}">
+			<tr>
+				<th th:text="${contribuyente.codigo}"/>
+				<th th:text="${contribuyente.nombre}"/>
+				<th th:text="${contribuyente.apellido}"/>
+				<th th:text="${contribuyente.nit}"/>
+				<th th:text="${contribuyente.f_fecha_ingreso}"/>
+				<th th:text="${contribuyente.importancia.s_importancia}"/>
+			</tr>
+		</th:block>	
+</table>
+<br>
+<form th:action="@{/index}">
+	<input type="submit" value="Regresar">
+</form>
 
 </body>
 </html>
