@@ -1,5 +1,6 @@
 package com.uca.capas.services;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -16,6 +17,8 @@ public class ContribuyenteServiceImpl implements ContribuyenteService{
 	
 	@Autowired
 	ContribuyenteDAO contribuyenteDAO;
+	@Autowired
+	ImportanciaService importanciaService;
 
 	@Override
 	public List<Contribuyente> findAll() throws DataAccessException {
@@ -25,7 +28,12 @@ public class ContribuyenteServiceImpl implements ContribuyenteService{
 	@Transactional
 	@Override
 	public void save(Contribuyente contribuyente) throws DataAccessException {
-			contribuyenteDAO.save(contribuyente);
+		
+		Date f_fecha_ingreso = new Date();
+		contribuyente.setF_fecha_ingreso(f_fecha_ingreso);
+		
+		contribuyente.setImportancia(importanciaService.findOne(contribuyente.getC_importancia()));
+		contribuyenteDAO.save(contribuyente);
 	}
 
 }

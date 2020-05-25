@@ -9,4 +9,8 @@ import com.uca.capas.domain.Importancia;
 
 public interface ImportanciaDAO {
 	public List<Importancia> findAll() throws DataAccessException;
+	
+//	public Importancia findOne(Integer code) throws DataAccessException;
+
+	public Importancia findOne(Integer c_importancia) throws DataAccessException;
 }

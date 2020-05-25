@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1> Ingresar nuevo contribuye</h1>
-	<form th:action="@{/index}" th:object="${contribuyente}" method="post">
+	<form th:action="@{/save}" th:object="${contribuyente}" method="post">
 	<input type="hidden" name="codigo" class="form-control" th:field="*{codigo}" />
 	
 		<label> Nombre: </label>
@@ -22,11 +22,12 @@
 		<span th:errors="*{nit}" style="color:#E81505"></span><br>
 		
 		<label for="importancia"> Importancia:</label>
-		<select name="importancia" id="importancia" th:field="*{importancia}">
+		<select name="importancia" id="importancia" th:field="*{c_importancia}">
 			<option th:each="importancia, row:${importancias}" th:value="${importancia.c_importancia}" th:text="${importancia.s_importancia}"></option>
 		</select> <br>
 		
 		<input type="submit" value="Guardar">
+		
 	</form>
 
 

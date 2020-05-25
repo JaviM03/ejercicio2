@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,16 +46,14 @@ public class MainController {
 		List<Importancia> importancias= null;
 		importancias=importanciaService.findAll();
 		if(result.hasErrors()) {
+			mav.setViewName("Main");
 		} else {
 			contribuyenteService.save(contribuyente);
 			List<Contribuyente> contribuyentes =null;
-			try {
-				contribuyentes=contribuyenteService.findAll();
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
+			
 			mav.addObject("contribuyente",contribuyente);
-			mav.setViewName("resultados");
+			mav.addObject("importancias", importancias);
+			mav.setViewName("resultado");
 		}
 		return mav;
 	}
@@ -73,5 +72,7 @@ public class MainController {
 		
 		return mav;
 	}
+	
+
 
 }
